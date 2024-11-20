@@ -79,6 +79,3 @@ To run the application securely, you need to set a production-grade secret key i
    ```
 3. **Security Note**: Replace the default insecure key to protect against attacks.
 
-## Summary
-
-This Credit Approval System is designed to be a scalable, secure, and user-friendly application for loan management. With its robust backend, containerized deployment, and API-driven architecture, it ensures efficiency and reliability for credit approval workflows.
