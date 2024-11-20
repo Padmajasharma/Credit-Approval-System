@@ -1,81 +1,84 @@
-# Credit Approval System
+# Credit Approval System Documentation
 
-This project is a credit approval system that determines loan eligibility based on past loan data. It includes APIs for adding new customers, checking loan eligibility, processing new loans, and viewing loan details.
+This project implements a **Credit Approval System** that evaluates loan eligibility using past loan data. It provides a set of APIs to manage customer information, assess loan eligibility, process loans, and retrieve loan-related details.
 
-## Features
+## Key Features
 
-- Add a new customer to the customer table
-- Check loan eligibility based on credit score
-- Process a new loan based on eligibility
-- View loan details and customer details
-- View all current loan details by customer ID
+- **Add New Customers**: Insert customer information into the system.
+- **Loan Eligibility Check**: Evaluate eligibility based on the customer's credit score.
+- **Process New Loans**: Approve and manage loans for eligible customers.
+- **Loan and Customer Details**: Retrieve information on specific loans and customers.
+- **Customer-Wide Loan Summary**: View all active loans for a given customer.
 
-## Technologies Used
+## Technologies
 
-- Django
-- PostgreSQL
-- Docker
-- Docker Compose
+- **Backend Framework**: Django  
+- **Database**: PostgreSQL  
+- **Containerization**: Docker, Docker Compose  
 
 ## API Endpoints
 
-All APIs run under `/api/v1/`:
-1. `/register/`: Add a new customer
-2. `/check-eligibility/`: Check loan eligibility based on credit score
-3. `/create-loan/`: Process a new loan based on eligibility
-4. `/view-loan/loan_id/`: View loan details and customer details by loan ID
-5. `/view-loans/customer_id/`: View all current loan details by customer ID
+All API endpoints are available under the `/api/v1/` path. Ensure all endpoints include a trailing slash (`/`):
 
-Note: Make sure to add a slash ('/') at the end of the API.
+1. `/register/` - Register a new customer.
+2. `/check-eligibility/` - Verify loan eligibility based on the credit score.
+3. `/create-loan/` - Process and approve a loan for eligible customers.
+4. `/view-loan/<loan_id>/` - Fetch details of a specific loan and its associated customer.
+5. `/view-loans/<customer_id>/` - Retrieve all active loans for a specific customer.
 
 ## Pre-requisites
 
-- python
-- docker
-- Docker Desktop
-- docker-compose
+Ensure you have the following installed:
 
-## Running the Application
+- **Python**  
+- **Docker** and **Docker Desktop**  
+- **Docker Compose**  
 
->Clone this project
-```bash
-git clone https://github.com/kushalv238/credit_approval_system.git
-```
->Navigate to the project directory
-```bash
-cd credit_approval_system
-```
->Start the Docker engine by starting the Docker Desktop or by using [OS utilities](https://docs.docker.com/config/daemon/start/)
+## Steps to Run the Application
 
->Run Docker Compose
-```bash
-docker-compose up
-```
->Access the APIs at
-```bash
-http://localhost:8000/api/v1/
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Padmajasharma/credit_approval_system.git
+   ```
+2. **Navigate to the project directory:**
+   ```bash
+   cd credit_approval_system
+   ```
+3. **Start Docker:**
+   Start the Docker engine using Docker Desktop or through [system utilities](https://docs.docker.com/config/daemon/start/).
 
-## Testing the project
-Use this Postman collection with existing APIs to test the project
+4. **Run the application with Docker Compose:**
+   ```bash
+   docker-compose up
+   ```
+5. **Access the API locally:**
+   ```
+   http://localhost:8000/api/v1/
+   ```
 
-[Collection](https://www.postman.com/telecoms-geologist-66457404/workspace/open/collection/26309885-7d351ebb-b7c9-4ee6-8447-239e59c549bc)
+## Testing the APIs
 
-Note: Change the agent to [desktop agent](https://www.postman.com/downloads/postman-agent/) if you run Postman on a browser. The option can be found on the bottom right.
+You can test the application using the provided Postman collection.  
+[Postman Collection Link](https://www.postman.com/telecoms-geologist-66457404/workspace/open/collection/26309885-7d351ebb-b7c9-4ee6-8447-239e59c549bc)
 
-## Adding production secrets
-Create a ```.env``` file in the root directory of this project & add a [SECRET_KEY](https://docs.djangoproject.com/en/5.0/ref/settings/#secret-key) for django to use.
->Run the following command in your Django project's Python shell to generate a secret key
-```bash
-from django.core.management.utils import get_random_secret_key
-get_random_secret_key()
-```
->Copy the new SECRET_KEY that is generated & paste it to your .env file.
-```
-SECRET_KEY=your_secret_key_here
-```
+### Steps for Postman Testing:
+- **Change the agent**: If using Postman in a browser, switch to a [desktop agent](https://www.postman.com/downloads/postman-agent/). This option is located in the bottom-right corner of Postman.
 
-Note: By default this application uses an insecure key please change it to avoid unwanted attacks.
+## Configuring Production Secrets
 
-## Author
-[Kushal Vadodaria](https://linkedin.com/in/kushal-vadodaria/)
+To run the application securely, you need to set a production-grade secret key in an `.env` file:
+
+1. **Generate a Django secret key:**
+   ```python
+   from django.core.management.utils import get_random_secret_key
+   get_random_secret_key()
+   ```
+2. **Create an `.env` file** in the project's root directory and add the secret key:
+   ```bash
+   SECRET_KEY=your_secret_key_here
+   ```
+3. **Security Note**: Replace the default insecure key to protect against attacks.
+
+## Summary
+
+This Credit Approval System is designed to be a scalable, secure, and user-friendly application for loan management. With its robust backend, containerized deployment, and API-driven architecture, it ensures efficiency and reliability for credit approval workflows.
